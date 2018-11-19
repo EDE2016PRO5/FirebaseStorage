@@ -14,7 +14,47 @@
         android:layout_marginTop="50dp"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:text="Fabulous text right here..."
+        android:text="Firebase Storage Example App"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:text="Uploading status:"
+        />
+
+    <ProgressBar
+        android:id="@+id/pBar_upload"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:text="Downloading status:"
+        />
+
+    <ProgressBar
+        android:id="@+id/pBar_download"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:visibility="gone"
+        />
+
+
 
 </LinearLayout>
