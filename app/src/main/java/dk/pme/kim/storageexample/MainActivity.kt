@@ -27,12 +27,14 @@ class MainActivity : AppCompatActivity() {
 			android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
 	//	Values for uploading:
-	private val mobilePath_upload = "/storage/emulated/0/Download/onlinedata.txt"
-	private val firebasePath_upload = "Test/onlinedata.txt"
+	private val filename_upload = "exp6.pdf"
+	private val mobilePath_upload = "/storage/emulated/0/Download/"+filename_upload
+	private val firebasePath_upload = "Test/"+filename_upload
 
 	//	Values for downloading:
+	private val filename_download = "Github App2.pdf"
 	private val mobilePath_download = Environment.getExternalStorageDirectory().toString()+"/Download"
-	private val firebasePath_download = "Test/onlinedata.txt"
+	private val firebasePath_download = "Test/"+filename_download
 
 	//	Firebase url and file to upload:
 	private val url = "gs://storageexample-916c1.appspot.com"
@@ -69,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	//	Download file:
-	fun downloadFile(url : String, path : String, prefix : String, suffix : String, outPath : String){
+	fun downloadFile(url : String, path : String, filename : String, outPath : String){
 		val storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(url)
 		val fileRef = storageRef.child(path)
 
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
 		//	Using createTempFile will create a cache file.
 		//val file = File.createTempFile(prefix, suffix, File(outPath))
-		val file = File(outPath, prefix+suffix)
+		val file = File(outPath, filename)
 
 		fileRef.getFile(file)
 				.addOnSuccessListener {
@@ -102,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 					grantResults[1] == PackageManager.PERMISSION_GRANTED &&
 					grantResults[2] == PackageManager.PERMISSION_GRANTED){
                 uploadFile(url, firebasePath_upload, file)
-                downloadFile(url, firebasePath_download, "Kim", ".txt", mobilePath_download)
+                downloadFile(url, firebasePath_download, filename_download, mobilePath_download)
 			}
 
 			else{
